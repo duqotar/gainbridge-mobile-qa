@@ -1,0 +1,46 @@
+# Dependency directories
+node_modules/
+
+# Environment variables (Sensitive data)
+.env
+.env.local
+.env.qa
+
+# WebdriverIO / Allure Reports
+allure-results/
+allure-report/
+errorShots/
+logs/
+*.log
+
+# TypeScript
+lib-cov
+*.seed
+*.log.json
+*.log.csv
+
+# Appium / Mobile Specific
+.appium/
+chromedriver_autodownload/
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+desktop.ini
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDE - JetBrains (WebStorm)
+.idea/
+
+# Temporary files
+*.swp
+*~
+.tmp/

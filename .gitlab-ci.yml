@@ -1,0 +1,39 @@
+image: node:20
+
+stages:
+    - test
+    - report
+
+variables:
+    ALLURE_RESULTS_DIR: 'allure-results'
+    ALLURE_REPORT_DIR: 'allure-report'
+
+e2e_mobile_tests:
+    stage: test
+    tags:
+        - kvm-enabled-runner # Indicates requirement for hardware acceleration
+    before_script:
+        - npm ci
+        # Note: In a real environment, Android SDK and Appium setup scripts would run here
+        # or a custom Docker image with pre-installed Android SDK would be used.
+    script:
+        - npx wdio run wdio.conf.ts
+    allow_failure: true
+    artifacts:
+        when: always
+        paths:
+            - $ALLURE_RESULTS_DIR/
+        expire_in: 1 week
+
+generate_allure_report:
+    stage: report
+    needs:
+        - e2e_mobile_tests
+    script:
+        - npm run allure:generate
+    artifacts:
+        paths:
+            - $ALLURE_REPORT_DIR/
+    environment:
+        name: Allure Report
+        url: $CI_PAGES_URL

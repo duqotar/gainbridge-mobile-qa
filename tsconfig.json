@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "types": ["node", "webdriverio", "@wdio/mocha-framework", "expect-webdriverio"],
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "baseUrl": ".",
+        "paths": {
+            "@wdio/globals": ["node_modules/@wdio/globals"]
+        }
+    },
+    "include": ["src/**/*.ts", "wdio.conf.ts"]
+}
